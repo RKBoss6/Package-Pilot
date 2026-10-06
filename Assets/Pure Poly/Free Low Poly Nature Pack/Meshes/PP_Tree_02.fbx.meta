@@ -1,14 +1,7 @@
 fileFormatVersion: 2
 guid: c6b568bf9e55de141add501b8cd2a0e9
-AssetOrigin:
-  serializedVersion: 1
-  productId: 205742
-  packageName: Free Low Poly Nature Forest
-  packageVersion: 3.0
-  assetPath: Assets/Pure Poly/Free Low Poly Nature Pack/Meshes/PP_Tree_02.fbx
-  uploadId: 802378
 ModelImporter:
-  serializedVersion: 24600
+  serializedVersion: 24200
   internalIDToNameTable: []
   externalObjects: {}
   materials:
@@ -16,7 +9,6 @@ ModelImporter:
     materialName: 0
     materialSearch: 1
     materialLocation: 1
-    searchTexturesGlobally: 1
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
@@ -46,8 +38,6 @@ ModelImporter:
     addColliders: 0
     useSRGBMaterialColor: 1
     sortHierarchyByName: 1
-    preBakeConvexCollisionMesh: 1
-    preBakeTriangleCollisionMesh: 0
     importPhysicalCameras: 1
     importVisibility: 1
     importBlendShapes: 1
@@ -69,8 +59,6 @@ ModelImporter:
     generateMeshLods: 1
     meshLodGenerationFlags: 0
     maximumMeshLod: -1
-    importUVs: -1
-    importVertexColors: 1
     meshOptimizationFlags: -1
     indexFormat: 0
     secondaryUVAngleDistortion: 8
@@ -90,7 +78,6 @@ ModelImporter:
     legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
     blendShapeNormalImportMode: 1
     normalSmoothingSource: 0
-    calculateBlendshapeNormalsDeltaFromImportedNormals: 1
   referencedClips: []
   importAnimation: 0
   humanDescription:
@@ -121,3 +108,10 @@ ModelImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 205742
+  packageName: Free Low Poly Nature Forest
+  packageVersion: 3.0
+  assetPath: Assets/Pure Poly/Free Low Poly Nature Pack/Meshes/PP_Tree_02.fbx
+  uploadId: 802378

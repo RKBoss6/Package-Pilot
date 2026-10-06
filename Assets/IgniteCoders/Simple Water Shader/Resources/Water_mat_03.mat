@@ -20,7 +20,7 @@ Material:
   stringTagMap: {}
   disabledShaderPasses:
   - MOTIONVECTORS
-  m_LockedProperties: 
+  m_LockedProperties: _WaveColor
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
@@ -34,6 +34,10 @@ Material:
         m_Offset: {x: 0, y: 0}
     - Texture2D_786b67b3efe14204b2f06f9afb9d8cf1:
         m_Texture: {fileID: 2800000, guid: 11154d936b05e66498f68fa178c5cfbb, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _HeightMap:
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Texture2DAsset_a7c025c2aba147adbdae5627d7dffcc2_Out_0:
@@ -62,12 +66,20 @@ Material:
     - Vector1_6f56a0970372485390c6587863c2374e: -16.4
     - Vector1_7273530c27a34c9f8ee5723b84f96baa: 0.03
     - Vector1_dada42ebfac44076897b6de67441ba32: 4.11
+    - _AlphaRange: 1.5
+    - _FoamNoiseScale: 1
+    - _FoamNoiseStrength: 0.18
+    - _FoamWidth: 0.62
     - _QueueControl: 0
     - _QueueOffset: 0
+    - _WaveFrequency: 0.5
+    - _WaveReach: 2.99
+    - _WaveSpeed: 0.19
     m_Colors:
     - Color_36218622185947c6a5ae36366d8e21d8: {r: 0, g: 0.47807485, b: 0.8862745, a: 0.9607843}
     - Color_93e06cd551a5449091bcde90b46765a0: {r: 0.9103774, g: 0.9841597, b: 1, a: 0.19607843}
     - Vector2_4351ac2be1d74054986ec5378db9d578: {r: 100, g: 100, b: 0, a: 0}
+    - _WaveColor: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
 --- !u!114 &1966053586763618431

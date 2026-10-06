@@ -53,7 +53,7 @@ namespace HeneGames.Airplane
                     //Launch airplane
                     if (Input.GetKeyDown(launchKey))
                     {
-                        landingAirplaneController.airplaneState = SimpleAirPlaneController.AirplaneState.Takeoff;
+                        TriggerTakeoff();
                     }
 
                     //Reset runway if landing airplane is taking off
@@ -68,7 +68,14 @@ namespace HeneGames.Airplane
                 }
             }
         }
+        public void TriggerTakeoff()
+        {
+            if (landingCompleted)
+            {
+                landingAirplaneController.airplaneState = SimpleAirPlaneController.AirplaneState.Takeoff;
 
+            }
+        }
         //Landing area add airplane controller reference
         public void AddAirplane(SimpleAirPlaneController _simpleAirPlane)
         {

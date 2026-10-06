@@ -7,7 +7,7 @@ TerrainLayer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Cauliflower_Green
-  m_DiffuseTexture: {fileID: 2800000, guid: 159064e6127c3413da5956bc06226cce, type: 3}
+  m_DiffuseTexture: {fileID: 2800000, guid: c32cd40dcb254854597d9598255e9c8b, type: 3}
   m_NormalMapTexture: {fileID: 2800000, guid: 57f965cd288c97e42b37fa5305ec1118, type: 3}
   m_MaskMapTexture: {fileID: 0}
   m_TileSize: {x: 3, y: 3}
@@ -20,4 +20,3 @@ TerrainLayer:
   m_DiffuseRemapMax: {x: 1, y: 1, z: 1, w: 1}
   m_MaskMapRemapMin: {x: 0, y: 0, z: 0, w: 0}
   m_MaskMapRemapMax: {x: 1, y: 1, z: 1, w: 1}
-  m_SmoothnessSource: 2
