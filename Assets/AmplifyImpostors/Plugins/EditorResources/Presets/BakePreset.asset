@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32f7caa019b8743459b7b0ab1fdc3bae, type: 3}
   m_Name: BakePreset
   m_EditorClassIdentifier: 
-  BakeShader: {fileID: 0}
+  BakeShader: {fileID: 4800000, guid: 30a8e337ed84177439ca24b6a5c97cd1, type: 3}
   RuntimeShader: {fileID: 0}
   AlphaIndex: 0
   Output:
