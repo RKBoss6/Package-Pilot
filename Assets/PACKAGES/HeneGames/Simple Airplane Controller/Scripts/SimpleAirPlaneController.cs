@@ -16,11 +16,14 @@ namespace HeneGames.Airplane
         public ButtonHold turboButton;
         public Action crashAction;
         public Joystick joystick;
-        public GameObject package;
+        public float fuelEfficiency;
+        public float boostEfficiency;
+        public CanvasGroup crashScreen;
+
+        public LogicScript logic;
         #region Private variables
 
         private List<SimpleAirPlaneCollider> airPlaneColliders = new List<SimpleAirPlaneCollider>();
-        private float timeWhenLastDropped=0;
         private float maxSpeed = 0.6f;
         private float speedMultiplier;
         private float currentYawSpeed;
@@ -193,8 +196,13 @@ namespace HeneGames.Airplane
             //Airplane move only if not dead
             if (!planeIsDead)
             {
+                logic.fuel-=fuelEfficiency*Time.deltaTime;
                 Movement();
                 SidewaysForceCalculation();
+                if (inputTurbo)
+                {
+                    logic.boostJuice-=boostEfficiency*Time.deltaTime;
+                }
             }
             else
             {
@@ -202,10 +210,13 @@ namespace HeneGames.Airplane
             }
 
             //Crash
-            if (!planeIsDead && HitSometing())
+            if ((!planeIsDead && HitSometing())||logic.fuel<=0)
             {
                 Crash();
             }
+
+
+            
         }
 
         private void SidewaysForceCalculation()
@@ -592,6 +603,8 @@ namespace HeneGames.Airplane
 
             //Kill player
             planeIsDead = true;
+
+            LeanTween.alphaCanvas(crashScreen,1,1);
         }
 
         #endregion
@@ -679,15 +692,9 @@ namespace HeneGames.Airplane
 
             //Turbo
             inputTurbo = Input.GetKey(KeyCode.LeftShift);
-            inputTurbo = turboButton.isHeldDown;
+            inputTurbo = turboButton.isHeldDown && logic.boostJuice>0;
         }
-        public void dropPackage(){
-            if(Time.time-1.5>timeWhenLastDropped){
-                timeWhenLastDropped=Time.time;
-                Instantiate(package, new Vector3(transform.position.x,transform.position.y-5,transform.position.z),Quaternion.Euler(0, transform.eulerAngles.y, 0));
-            }
-
-        }
+        
         #endregion
     }
     

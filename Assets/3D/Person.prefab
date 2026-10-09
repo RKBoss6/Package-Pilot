@@ -300,19 +300,19 @@ NavMeshAgent:
   m_GameObject: {fileID: 1767215382286413372}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 4.26
+  m_Radius: 2.26
   m_Speed: 1.93
   m_Acceleration: 3.21
   avoidancePriority: 4
   m_AngularSpeed: 159.6
-  m_StoppingDistance: 3.84
+  m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 0
   m_AutoBraking: 1
   m_AutoRepath: 1
-  m_Height: 2
-  m_BaseOffset: 0.15
+  m_Height: 5.54
+  m_BaseOffset: 0.47
   m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
+  m_ObstacleAvoidanceType: 1
 --- !u!114 &6871100931549859824
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -325,7 +325,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a623296db0de747adb3e3c945ee96804, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PeopleScript
-  wanderRadius: 461.1
+  wanderRadius: 75.2
+  speedMin: 2.5
+  speedMax: 3.2
   PersonTypes:
   - {fileID: 4205708412314756860}
   - {fileID: 5844869010766597694}
