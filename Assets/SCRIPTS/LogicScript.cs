@@ -20,12 +20,13 @@ public class LogicScript : MonoBehaviour
     public float maxBoost;
     [HideInInspector] public float boostJuice;
     public Slider boostSlider;
-
+    private List<float> buildingAccuracies = new List<float>();
     private List<GameObject> allBuildings;
     private List<GameObject> targetMarkers = new List<GameObject>();
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
+        Application.targetFrameRate=45;
         fuel=maxFuel;
         boostJuice=maxBoost;
 
@@ -48,6 +49,11 @@ public class LogicScript : MonoBehaviour
         var obj = Instantiate(targetMarker, new Vector3(target.transform.position.x,target.transform.position.y+60,target.transform.position.z),Quaternion.Euler(0, 0, 0));
         targetMarkers.Add(obj);
     }
+    void calculateEndMoney()
+    {
+        float fuelLeftPercent=fuel/maxFuel;
+
+    }
     // Update is called once per frame
     void Update()
     {
@@ -67,9 +73,9 @@ public class LogicScript : MonoBehaviour
     private void scorePackage(GameObject package)
     {
         GameObject target=getClosestBuilding(Utils.Vector3To2(package.transform.position));
-        double dist=Vector2.Distance(Utils.Vector3To2(target.transform.position),Utils.Vector3To2(package.transform.position));
+        float dist=Vector2.Distance(Utils.Vector3To2(target.transform.position),Utils.Vector3To2(package.transform.position));
         print("SCORE: "+dist);
-
+        buildingAccuracies.Add(dist);
         int idx=targetBuildings.IndexOf(target);
         Destroy(targetMarkers[idx]);
         targetMarkers.RemoveAt(idx);

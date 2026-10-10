@@ -210,7 +210,7 @@ namespace HeneGames.Airplane
             }
 
             //Crash
-            if ((!planeIsDead && HitSometing())||logic.fuel<=0)
+            if (!planeIsDead && (HitSometing()||logic.fuel<=0))
             {
                 Crash();
             }
@@ -585,6 +585,8 @@ namespace HeneGames.Airplane
         {
             //Invoke action
             crashAction?.Invoke();
+            planeIsDead = true;
+
 
             //Set rigidbody to non cinematic
             rb.isKinematic = false;
@@ -602,7 +604,6 @@ namespace HeneGames.Airplane
             }
 
             //Kill player
-            planeIsDead = true;
 
             LeanTween.alphaCanvas(crashScreen,1,1);
         }
