@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 using System;
+using Unity.VisualScripting;
 
 namespace HeneGames.Airplane
 {
@@ -18,8 +19,7 @@ namespace HeneGames.Airplane
         public Joystick joystick;
         public float fuelEfficiency;
         public float boostEfficiency;
-        public CanvasGroup crashScreen;
-
+        private bool didShowFinalScreen=false;
         public LogicScript logic;
         #region Private variables
 
@@ -170,6 +170,11 @@ namespace HeneGames.Airplane
         {
             AudioSystem();
             HandleInputs();
+            if (currentRunway.AirplaneLandingCompleted() && !didShowFinalScreen && logic.buildingAccuracies.Count>0)
+            {
+                didShowFinalScreen=true;
+                logic.Finish();
+            }
 
             switch (airplaneState)
             {
@@ -186,6 +191,7 @@ namespace HeneGames.Airplane
                     break;
             }
         }
+
 
         #region Flying State
 
@@ -392,6 +398,7 @@ namespace HeneGames.Airplane
 
             //Set local rotation to zero
             transform.localRotation = Quaternion.Lerp(transform.localRotation, Quaternion.Euler(0f,0f,0f), 2f * Time.deltaTime);
+
         }
 
         #endregion
@@ -421,7 +428,7 @@ namespace HeneGames.Airplane
             float _distanceToRunway = Vector3.Distance(transform.position, currentRunway.transform.position);
             if(_distanceToRunway > takeoffLenght)
             {
-                currentRunway = null;
+                //currentRunway = null;
                 airplaneState = AirplaneState.Flying;
             }
         }
@@ -604,8 +611,7 @@ namespace HeneGames.Airplane
             }
 
             //Kill player
-
-            LeanTween.alphaCanvas(crashScreen,1,1);
+            logic.Crash();
         }
 
         #endregion

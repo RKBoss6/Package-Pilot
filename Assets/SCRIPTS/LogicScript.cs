@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Timeline;
@@ -9,7 +10,6 @@ public class LogicScript : MonoBehaviour
 {
     public List<GameObject> targetBuildings = new List<GameObject>();
     public GameObject targetMarker;
-    public Button dropButton;
     public GameObject packagePrefab;
     private float timeWhenLastDropped=0;
     public float maxFuel;
@@ -20,9 +20,27 @@ public class LogicScript : MonoBehaviour
     public float maxBoost;
     [HideInInspector] public float boostJuice;
     public Slider boostSlider;
-    private List<float> buildingAccuracies = new List<float>();
+    [HideInInspector] public List<float> buildingAccuracies = new List<float>();
     private List<GameObject> allBuildings;
     private List<GameObject> targetMarkers = new List<GameObject>();
+
+
+
+    [Header("UI")]
+    public CanvasGroup finishScreen;
+    public CanvasGroup controlsScreen;
+    public CanvasGroup crashScreen;
+    public Button dropButton;
+
+    public TextMeshProUGUI dollaBillFinalText;
+    public TextMeshProUGUI fuelBonusText;
+    public TextMeshProUGUI profitPerBuildingText;
+    public TextMeshProUGUI buildingsServicedText;
+
+
+    private float profitPerBuilding=0;
+    private float fuelBonus=0;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
@@ -49,9 +67,20 @@ public class LogicScript : MonoBehaviour
         var obj = Instantiate(targetMarker, new Vector3(target.transform.position.x,target.transform.position.y+60,target.transform.position.z),Quaternion.Euler(0, 0, 0));
         targetMarkers.Add(obj);
     }
-    void calculateEndMoney()
+    float calculateEndMoney()
     {
+        float dollarsFromFullFuel = 40; // 10/25%
+
         float fuelLeftPercent=fuel/maxFuel;
+
+        float total=fuelLeftPercent*dollarsFromFullFuel;
+        fuelBonus= total;
+        profitPerBuilding=Mathf.Clamp( -1.225f*buildingAccuracies.Average()+50 ,30,50);
+    // add based on accuracy
+// eq: -1.225x+50
+        total+=buildingAccuracies.Count*profitPerBuilding;
+        
+        return Mathf.Round(total*100)/100;
 
     }
     // Update is called once per frame
@@ -133,6 +162,24 @@ public class LogicScript : MonoBehaviour
         return false;
     }
 
+    public void Crash()
+    {
+        LeanTween.alphaCanvas(crashScreen,1,1);
+        crashScreen.blocksRaycasts=true;
+
+        LeanTween.alphaCanvas(controlsScreen,0,1);
+    }
+
+    public void Finish()
+    {
+        dollaBillFinalText.text="$"+calculateEndMoney().ToString();
+        profitPerBuildingText.text="Profit per building: "+profitPerBuilding.ToString();
+        fuelBonusText.text="Fuel bonus: "+fuelBonus.ToString();
+        buildingsServicedText.text="Buildings serviced: "+buildingAccuracies.Count;
+        LeanTween.alphaCanvas(finishScreen,1,1);
+        finishScreen.blocksRaycasts=true;
+        LeanTween.alphaCanvas(controlsScreen,0,1);
+    }
 
 }
 
