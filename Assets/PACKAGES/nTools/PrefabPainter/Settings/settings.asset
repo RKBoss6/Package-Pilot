@@ -2693,8 +2693,8 @@ MonoBehaviour:
     brushes:
     - name: PP_Birch_Tree_05
       settings:
-        brushRadius: 127
-        brushSpacing: 2.5
+        brushRadius: 35
+        brushSpacing: 2.2
         brushOverlapCheckMode: 0
         brushOverlapDistance: 0.5
         brushOverlapCheckObjects: 1
@@ -3003,12 +3003,12 @@ MonoBehaviour:
       - gameObject: {fileID: 0}
       - gameObject: {fileID: 0}
       selectedSlot: 0
-      selected: 1
+      selected: 0
       colorTag: 0
       customPreviewImage: {fileID: 0}
     - name: PP_Birch_Tree_06
       settings:
-        brushRadius: 1
+        brushRadius: 40
         brushSpacing: 0.5
         brushOverlapCheckMode: 0
         brushOverlapDistance: 0.5
@@ -3318,7 +3318,7 @@ MonoBehaviour:
       - gameObject: {fileID: 0}
       - gameObject: {fileID: 0}
       selectedSlot: 0
-      selected: 0
+      selected: 1
       colorTag: 0
       customPreviewImage: {fileID: 0}
     levelsGamma: 1
@@ -15933,28 +15933,28 @@ MonoBehaviour:
     levelsInWhite: 255
     levelsOutBlack: 0
     levelsOutWhite: 255
-  activeTab: 6
+  activeTab: 5
   paintOnSelected: 0
   paintLayers:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 64
   ignoreLayers:
     serializedVersion: 2
-    m_Bits: 32
+    m_Bits: 0
   placeUnder: 2
   overwritePrefabLayer: 1
-  prefabPlaceLayer: 5
+  prefabPlaceLayer: 0
   pinSnapRotationValue: 15
   pinSnapScaleValue: 0.1
   pinSnapRotation: 0
   pinSnapScale: 0
   placeAngleStep: 15
   placeScaleStep: 0.1
-  eraseBrushRadius: 15
+  eraseBrushRadius: 61
   eraseByLayer: 1
   eraseLayers:
     serializedVersion: 2
-    m_Bits: 32
+    m_Bits: 33
   selectBrushRadius: 5
   selectByLayer: 0
   selectLayers:
@@ -15981,7 +15981,7 @@ MonoBehaviour:
   movePivotMode: 3
   moveLockUp: 0
   moveOrientationMode: 0
-  maxBrushRadius: 833.5
+  maxBrushRadius: 910
   maxBrushSpacing: 31.45
   surfaceCoords: 0
   hideSceneSettingsObject: 1
