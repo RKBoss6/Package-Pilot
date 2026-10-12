@@ -24,7 +24,7 @@ public class LogicScript : MonoBehaviour
     private List<GameObject> allBuildings;
     private List<GameObject> targetMarkers = new List<GameObject>();
 
-
+    [HideInInspector] public float money;
 
     [Header("UI")]
     public CanvasGroup finishScreen;
@@ -55,7 +55,7 @@ public class LogicScript : MonoBehaviour
 
             
         }
-
+        money=PlayerPrefs.GetFloat("Money",100);
         
     }
     void addNewTargetBuilding()
@@ -80,7 +80,7 @@ public class LogicScript : MonoBehaviour
 // eq: -1.225x+50
         total+=buildingAccuracies.Count*profitPerBuilding;
         
-        return Mathf.Round(total*100)/100;
+        return total;
 
     }
     // Update is called once per frame
@@ -172,9 +172,13 @@ public class LogicScript : MonoBehaviour
 
     public void Finish()
     {
-        dollaBillFinalText.text="$"+calculateEndMoney().ToString();
-        profitPerBuildingText.text="Profit per building: "+profitPerBuilding.ToString();
-        fuelBonusText.text="Fuel bonus: "+fuelBonus.ToString();
+        float finalMoney = calculateEndMoney();
+        money+=finalMoney;
+        PlayerPrefs.SetFloat("Money",money);
+        PlayerPrefs.Save();
+        dollaBillFinalText.text="$"+Utils.formatMoney(finalMoney);
+        profitPerBuildingText.text="Profit per building: $"+(Mathf.Round(profitPerBuilding*100)/100).ToString();
+        fuelBonusText.text="Fuel bonus: $"+(Mathf.Round(fuelBonus*100)/100).ToString();
         buildingsServicedText.text="Buildings serviced: "+buildingAccuracies.Count;
         LeanTween.alphaCanvas(finishScreen,1,1);
         finishScreen.blocksRaycasts=true;
@@ -188,5 +192,27 @@ public class Utils{
     public static Vector2 Vector3To2(Vector3 pos)
     {
         return new Vector2(pos.x,pos.z);
+    }
+    public static string formatMoney(float money)
+    {
+        money=Mathf.Round(money*100)/100;
+        // 1323.32
+        if (money < 1000)
+        {
+            return money.ToString("F2");
+        }
+        else if (money < 1000000)
+        {
+            return Mathf.Round(money*10)/10000+"k";
+
+        }
+        else if (money<1000000*1000)
+        {
+            return Mathf.Round(money*100000)/1000000+"m";
+        }
+        else
+        {
+            return Mathf.Round(money*100000*100)/1000000*1000+"b";
+        }
     }
 }
