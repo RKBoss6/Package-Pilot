@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Tree
   - Building
+  - PlayerCollider
+  - Logic
   layers:
   - Default
   - TransparentFX

@@ -16,7 +16,9 @@ namespace HeneGames.Airplane
             //Collide someting bad
             if(other.gameObject.GetComponent<SimpleAirPlaneCollider>() == null && other.gameObject.GetComponent<LandingArea>() == null)
             {
-                collideSometing = true;
+                if(!other.isTrigger){
+                    collideSometing = true;
+                }
             }
         }
     }

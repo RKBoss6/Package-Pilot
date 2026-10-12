@@ -41,6 +41,8 @@ public class LogicScript : MonoBehaviour
     private float profitPerBuilding=0;
     private float fuelBonus=0;
 
+    public ParticleManager particleManager;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
@@ -57,6 +59,10 @@ public class LogicScript : MonoBehaviour
         }
         money=PlayerPrefs.GetFloat("Money",100);
         
+    }
+    public void startPowerup(PowerupTypeDefinition powerup)
+    {
+        particleManager.triggerPowerupParticle(powerup);
     }
     void addNewTargetBuilding()
     {
